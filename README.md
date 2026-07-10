@@ -94,19 +94,11 @@ Residual Diagnostics
 
 # Results
 
-## Monthly Sea Level
+## Mean sea level rise
 
 Shows the long-term increase in monthly sea-level observations.
 
-![Monthly Series](images/monthly_series.png)
-
----
-
-## Annual Mean Trend
-
-Annual averages reduce seasonal variability and highlight the long-term increasing trend.
-
-![Annual Trend](images/annual_trend.png)
+![Mean sea level rise](figures/Mean sea level rise.png)
 
 ---
 
@@ -114,7 +106,7 @@ Annual averages reduce seasonal variability and highlight the long-term increasi
 
 Climate-stripe visualization illustrating below-average and above-average sea-level conditions throughout the study period.
 
-![Anomaly](images/anomaly_stripes.png)
+![Anomaly](figures/Sea level anomaly stripes.png)
 
 ---
 
@@ -122,7 +114,7 @@ Climate-stripe visualization illustrating below-average and above-average sea-le
 
 Monthly variability across the complete historical record.
 
-![Heatmap](images/heatmap.png)
+![Heatmap](figures/heatmap.png)
 
 ---
 
@@ -134,7 +126,7 @@ Seasonal-Trend decomposition separates the observed signal into:
 - Seasonal
 - Residual
 
-![STL](images/stl.png)
+![STL](figures/stl.png)
 
 ---
 
@@ -142,7 +134,7 @@ Seasonal-Trend decomposition separates the observed signal into:
 
 Forecasting of the final two years using Seasonal ARIMA.
 
-![Forecast](images/forecast.png)
+![Forecast](figures/forecast.png)
 
 ---
 
@@ -150,7 +142,7 @@ Forecasting of the final two years using Seasonal ARIMA.
 
 Model adequacy evaluated using residual analysis and Q-Q plot.
 
-![Diagnostics](images/qqplot.png)
+![Diagnostics](figures/qqplot.png)
 
 ---
 
