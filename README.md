@@ -88,97 +88,76 @@ Residual Diagnostics
 
 # Results
 
-## Monthly Sea Level Time Series
+## Mean Sea Level Rise
 
-Monthly sea-level observations reveal pronounced seasonal variability together with a persistent long-term increase throughout the 84-year study period. A fitted linear regression line highlights the statistically significant upward trend.
-
-<p align="center">
-<img src="figures/monthly_series.png" width="900">
-</p>
-
----
-
-## Annual Mean Sea Level
-
-Annual averaging reduces seasonal fluctuations and provides a clearer representation of long-term sea-level change.
-
-Both **Linear Regression** and **LOESS smoothing** indicate a continuous increase in annual mean sea level between **1878 and 1961**.
+The historical sea-level observations (1878–1961) reveal a persistent long-term increasing trend with evident seasonal variability. Linear regression analysis indicates a statistically significant rise in mean sea level throughout the 84-year observation period.
 
 <p align="center">
-<img src="figures/annual_trend.png" width="900">
+  <img src="./figures/Mean%20sea%20level%20rise.png" width="900" alt="Mean Sea Level Rise">
 </p>
 
 ---
 
 ## Sea Level Anomaly Stripes
 
-Sea-level anomalies were calculated relative to the long-term average (**6987 mm**). The anomaly stripe visualization clearly illustrates the transition from predominantly below-average sea levels in the early decades to increasingly above-average conditions during the latter half of the record.
+Sea-level anomalies were calculated relative to the long-term mean sea level. The anomaly stripe visualization illustrates the temporal transition from predominantly below-average conditions during the early decades to increasingly above-average sea levels in the latter part of the record, highlighting the long-term positive trend.
 
 <p align="center">
-<img src="figures/anomaly_stripes.png" width="900">
-</p>
-
----
-
-## Calendar Heatmap
-
-The calendar heatmap highlights seasonal variability and long-term temporal changes in monthly sea-level observations. Seasonal cycles remain consistent, while a gradual increase in sea level becomes evident through successive decades.
-
-<p align="center">
-<img src="figures/heatmap.png" width="900">
+  <img src="./figures/Sea%20level%20anomaly%20stripes.png" width="900" alt="Sea Level Anomaly Stripes">
 </p>
 
 ---
 
 ## STL Decomposition
 
-Seasonal-Trend decomposition (STL) separates the observed series into:
+Seasonal-Trend decomposition using Loess (STL) separated the observed time series into three components:
 
-- Trend
-- Seasonal Component
-- Residual Component
+- **Trend**
+- **Seasonal**
+- **Residual**
 
-The decomposition demonstrates that long-term sea-level rise dominates the historical record while seasonal oscillations remain relatively stable.
+The decomposition confirms a gradual long-term increase in sea level while preserving a stable seasonal cycle. The residual component contains relatively small irregular fluctuations, indicating that the major variability is effectively explained by the trend and seasonal components.
 
 <p align="center">
-<img src="figures/stl.png" width="900">
+  <img src="./figures/STL.png" width="900" alt="STL Decomposition">
 </p>
 
 ---
 
 ## Seasonally Adjusted Series
 
-Removing the seasonal component reveals the underlying long-term trend more clearly. The adjusted series confirms a gradual and persistent increase in sea level without major discontinuities.
+After removing the seasonal component, the adjusted time series clearly highlights the underlying long-term trend. The seasonally adjusted observations demonstrate a continuous increase in sea level throughout the study period with reduced seasonal noise.
 
 <p align="center">
-<img src="figures/seasonally_adjusted.png" width="900">
+  <img src="./figures/Seasonally%20adjusted.png" width="900" alt="Seasonally Adjusted Series">
 </p>
 
 ---
 
 ## Trend Analysis
 
-Multiple statistical approaches consistently confirmed a significant increasing trend in sea level.
+Multiple statistical methods consistently confirmed a significant increasing trend in Mumbai's historical sea-level record.
 
 | Method | Result |
-|---------|-------:|
+|---------|--------:|
 | Linear Regression | **0.914 mm/year** |
-| R² | **0.503** |
 | Mann–Kendall Test | **z = 6.68 (p < 0.001)** |
 | Kendall's Tau | **0.497** |
 | Theil–Sen Slope | **0.862 mm/year** |
 | Seasonal Mann–Kendall | **z = 13.41 (p < 0.001)** |
 
+The agreement between parametric and non-parametric methods demonstrates the robustness of the observed long-term increase in sea level.
+
 ---
 
 ## ARIMA Forecasting
 
-A Seasonal **ARIMA(0,1,3)(2,0,0)[12]** model was developed using observations from **1878–1959** and validated using data from **1960–1961**.
+A Seasonal **ARIMA(0,1,3)(2,0,0)[12]** model was developed using observations from **1878–1959** and validated using an independent test period (**1960–1961**).
 
-The model successfully reproduced seasonal dynamics and demonstrated good short-term forecasting performance.
+The model successfully captured the seasonal behaviour of the series and provided reliable short-term forecasts.
 
 <p align="center">
-<img src="figures/forecast.png" width="900">
+  <img src="./figures/ARIMA.png" width="900" alt="ARIMA Forecast">
 </p>
 
 ### Forecast Performance
@@ -187,74 +166,74 @@ The model successfully reproduced seasonal dynamics and demonstrated good short-
 |---------|------:|
 | RMSE | **61.77 mm** |
 | MAE | **49.66 mm** |
-| MAPE | **0.71 %** |
+| MAPE | **0.71%** |
 | Theil's U | **0.81** |
 
-Since **Theil's U < 1**, the ARIMA model outperformed a naïve forecasting approach, indicating reliable short-term predictive capability.
+A **Theil's U value below 1** indicates that the ARIMA model performs better than a naïve forecasting approach, demonstrating good predictive capability.
 
 ---
 
 ## Residual Diagnostics
 
-Residual analysis was performed using:
+Residual diagnostics were performed to evaluate model adequacy using:
 
 - Autocorrelation Function (ACF)
 - Partial Autocorrelation Function (PACF)
-- Ljung–Box Test
-- Shapiro–Wilk Test
 - Normal Q–Q Plot
 
-The diagnostics indicate that the STL decomposition and ARIMA model capture the dominant temporal characteristics of the historical sea-level series, although minor residual autocorrelation remains.
+The ACF and PACF plots indicate that most temporal dependence has been adequately captured by the fitted ARIMA model. The Q–Q plot shows that residuals are approximately normally distributed with only minor deviations at the distribution tails, suggesting an acceptable model fit.
+
+### ACF & PACF
 
 <p align="center">
-<img src="figures/qqplot.png" width="750">
+  <img src="./figures/ACF-PACF.png" width="900" alt="ACF and PACF Diagnostics">
+</p>
+
+### Normal Q–Q Plot
+
+<p align="center">
+  <img src="./figures/Q-plot.png" width="700" alt="Normal QQ Plot">
 </p>
 
 ---
 
-# Key Findings
+## Key Findings
 
-| Analysis | Result |
-|-----------|--------|
-| Study Period | **1878–1961 (84 Years)** |
-| Monthly Observations | **1008** |
-| Linear Trend | **0.914 mm/year** |
-| Mann–Kendall Test | **Significant Increasing Trend** |
-| Seasonal Mann–Kendall | **Highly Significant** |
-| Theil–Sen Slope | **0.862 mm/year** |
-| ARIMA Model | **ARIMA(0,1,3)(2,0,0)[12]** |
-| Forecast Accuracy | **MAPE = 0.71%** |
-| Theil's U | **0.81 (Better than Naïve Forecast)** |
+- Analysed **1008 monthly sea-level observations** spanning **84 years (1878–1961)**.
+- Linear regression estimated a long-term sea-level rise of **0.914 mm/year**.
+- The **Mann–Kendall** and **Seasonal Mann–Kendall** tests confirmed a highly significant increasing trend (**p < 0.001**).
+- The **Theil–Sen estimator** produced a robust trend estimate of **0.862 mm/year**.
+- STL decomposition successfully separated long-term trends from seasonal variability.
+- The Seasonal **ARIMA(0,1,3)(2,0,0)[12]** model accurately represented historical sea-level dynamics and achieved a **MAPE of 0.71%**.
+- **Theil's U = 0.81** indicates that the forecasting model outperformed a naïve benchmark.
+- Overall, the analyses consistently demonstrate a statistically significant long-term rise in Mumbai's historical sea level and highlight the effectiveness of classical time-series methods for analysing and forecasting coastal sea-level variability.
 
----
 
-# Repository Structure
+## Repository Structure
 
 ```text
 Mumbai-Sea-Level-Time-Series/
 │
 ├── data/
-│   └── 43.rlrdata.txt
+│   └── 43.rlrdata.txt              # PSMSL monthly sea-level dataset
 │
 ├── scripts/
-│   └── Sea_Level_Rise_Timeseries.R
+│   └── Sea_Level_Rise_Timeseries.R # Complete R workflow for analysis
 │
 ├── figures/
-│   ├── monthly_series.png
-│   ├── annual_trend.png
-│   ├── anomaly_stripes.png
-│   ├── heatmap.png
-│   ├── stl.png
-│   ├── seasonally_adjusted.png
-│   ├── forecast.png
-│   └── qqplot.png
+│   ├── Mean sea level rise.png
+│   ├── Sea level anomaly stripes.png
+│   ├── STL.png
+│   ├── Seasonally adjusted.png
+│   ├── ARIMA.png
+│   ├── ACF-PACF.png
+│   └── Q-plot.png
 │
 ├── report/
 │   └── Timeseries_Assignment_Jyotiprakash_MSCC1250022.pdf
 │
 ├── README.md
 └── LICENSE
-```
 
 ---
 
