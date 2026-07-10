@@ -88,112 +88,122 @@ Residual Diagnostics
 
 # Results
 
+The historical sea-level observations from **Mumbai (Apollo Bandar)** reveal a statistically significant long-term increase between **1878 and 1961**. Time-series decomposition, trend analysis, and forecasting consistently demonstrate rising sea levels while preserving seasonal variability.
+
+---
+
 ## Mean Sea Level Rise
 
-The historical sea-level observations (1878–1961) reveal a persistent long-term increasing trend with evident seasonal variability. Linear regression analysis indicates a statistically significant rise in mean sea level throughout the 84-year observation period.
+> **Figure 1.** Historical monthly sea-level observations (1878–1961).
+
+The observed time series exhibits pronounced seasonal fluctuations superimposed on a persistent long-term increasing trend. Linear regression confirms a statistically significant rise in sea level throughout the 84-year observation period.
 
 <p align="center">
-  <img src="./figures/Mean%20sea%20level%20rise.png" width="900" alt="Mean Sea Level Rise">
+  <img src="./figures/Mean%20sea%20level%20rise.png" width="90%">
 </p>
 
 ---
 
 ## Sea Level Anomaly Stripes
 
-Sea-level anomalies were calculated relative to the long-term mean sea level. The anomaly stripe visualization illustrates the temporal transition from predominantly below-average conditions during the early decades to increasingly above-average sea levels in the latter part of the record, highlighting the long-term positive trend.
+> **Figure 2.** Annual sea-level anomalies relative to the long-term mean.
+
+The anomaly stripe visualization illustrates the gradual transition from predominantly below-average conditions during the late nineteenth century to increasingly above-average sea levels during the mid-twentieth century.
 
 <p align="center">
-  <img src="./figures/Sea%20level%20anomaly%20stripes.png" width="900" alt="Sea Level Anomaly Stripes">
+  <img src="./figures/Sea%20level%20anomaly%20stripes.png" width="90%">
 </p>
 
 ---
 
 ## STL Decomposition
 
-Seasonal-Trend decomposition using Loess (STL) separated the observed time series into three components:
+> **Figure 3.** Seasonal-Trend decomposition using Loess (STL).
 
-- **Trend**
-- **Seasonal**
-- **Residual**
+The observed series was decomposed into:
 
-The decomposition confirms a gradual long-term increase in sea level while preserving a stable seasonal cycle. The residual component contains relatively small irregular fluctuations, indicating that the major variability is effectively explained by the trend and seasonal components.
+-  Trend
+-  Seasonal
+-  Residual
+
+The decomposition demonstrates that long-term sea-level rise dominates the historical record while seasonal oscillations remain relatively stable.
 
 <p align="center">
-  <img src="./figures/STL.png" width="900" alt="STL Decomposition">
+  <img src="./figures/STL.png" width="90%">
 </p>
 
 ---
 
 ## Seasonally Adjusted Series
 
-After removing the seasonal component, the adjusted time series clearly highlights the underlying long-term trend. The seasonally adjusted observations demonstrate a continuous increase in sea level throughout the study period with reduced seasonal noise.
+> **Figure 4.** Seasonally adjusted sea-level observations.
+
+Removing the seasonal component highlights the underlying long-term trend, revealing a continuous increase in sea level with substantially reduced seasonal variability.
 
 <p align="center">
-  <img src="./figures/Seasonally%20adjusted.png" width="900" alt="Seasonally Adjusted Series">
+  <img src="./figures/Seasonally%20adjusted.png" width="90%">
 </p>
 
 ---
 
-## Trend Analysis
+## Statistical Trend Analysis
 
-Multiple statistical methods consistently confirmed a significant increasing trend in Mumbai's historical sea-level record.
+Multiple statistical approaches consistently confirmed a significant increasing trend in Mumbai's historical sea-level record.
 
 | Method | Result |
-|---------|--------:|
+|:--------|-------:|
 | Linear Regression | **0.914 mm/year** |
 | Mann–Kendall Test | **z = 6.68 (p < 0.001)** |
 | Kendall's Tau | **0.497** |
 | Theil–Sen Slope | **0.862 mm/year** |
 | Seasonal Mann–Kendall | **z = 13.41 (p < 0.001)** |
 
-The agreement between parametric and non-parametric methods demonstrates the robustness of the observed long-term increase in sea level.
+> **Key Interpretation:** Both parametric and non-parametric methods independently confirm a robust and statistically significant long-term increase in sea level.
 
 ---
 
 ## ARIMA Forecasting
 
-A Seasonal **ARIMA(0,1,3)(2,0,0)[12]** model was developed using observations from **1878–1959** and validated using an independent test period (**1960–1961**).
+> **Figure 5.** Seasonal ARIMA forecast compared with observed values.
 
-The model successfully captured the seasonal behaviour of the series and provided reliable short-term forecasts.
+A Seasonal **ARIMA(0,1,3)(2,0,0)[12]** model was calibrated using observations from **1878–1959** and validated using the independent period **1960–1961**.
+
+The model successfully reproduced seasonal variability and demonstrated strong short-term forecasting performance.
 
 <p align="center">
-  <img src="./figures/ARIMA.png" width="900" alt="ARIMA Forecast">
+  <img src="./figures/ARIMA.png" width="90%">
 </p>
 
 ### Forecast Performance
 
 | Metric | Value |
-|---------|------:|
+|:--------|------:|
 | RMSE | **61.77 mm** |
 | MAE | **49.66 mm** |
 | MAPE | **0.71%** |
 | Theil's U | **0.81** |
 
-A **Theil's U value below 1** indicates that the ARIMA model performs better than a naïve forecasting approach, demonstrating good predictive capability.
+> **Model Performance:** A **Theil's U value below 1** indicates that the ARIMA model outperformed a naïve forecasting approach, demonstrating reliable predictive capability.
 
 ---
 
 ## Residual Diagnostics
 
-Residual diagnostics were performed to evaluate model adequacy using:
+Residual diagnostics were performed to evaluate model adequacy.
 
-- Autocorrelation Function (ACF)
-- Partial Autocorrelation Function (PACF)
-- Normal Q–Q Plot
-
-The ACF and PACF plots indicate that most temporal dependence has been adequately captured by the fitted ARIMA model. The Q–Q plot shows that residuals are approximately normally distributed with only minor deviations at the distribution tails, suggesting an acceptable model fit.
-
-### ACF & PACF
+### Autocorrelation Analysis
 
 <p align="center">
-  <img src="./figures/ACF-PACF.png" width="900" alt="ACF and PACF Diagnostics">
+  <img src="./figures/ACF-PACF.png" width="90%">
 </p>
 
 ### Normal Q–Q Plot
 
 <p align="center">
-  <img src="./figures/Q-plot.png" width="700" alt="Normal QQ Plot">
+  <img src="./figures/Q-plot.png" width="70%">
 </p>
+
+The ACF and PACF plots indicate that the majority of temporal dependence has been successfully captured by the fitted ARIMA model. The Q–Q plot suggests that residuals are approximately normally distributed, indicating satisfactory model assumptions.
 
 ---
 
