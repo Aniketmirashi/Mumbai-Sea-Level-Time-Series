@@ -90,53 +90,7 @@ Residual Diagnostics
 
 ✔ Residual Diagnostics
 
----
-
-# Results
-
-## Mean sea level rise
-
-Shows the long-term increase in monthly sea-level observations.
-
-![Mean sea level rise](figures/Mean sea level rise.png)
-
----
-
-## Sea Level Anomaly Stripes
-
-Climate-stripe visualization illustrating below-average and above-average sea-level conditions throughout the study period.
-
-![Anomaly](figures/Sea level anomaly stripes.png)
-
----
-
-## Calendar Heatmap
-
-Monthly variability across the complete historical record.
-
-![Heatmap](figures/heatmap.png)
-
----
-
-## STL Decomposition
-
-Seasonal-Trend decomposition separates the observed signal into:
-
-- Trend
-- Seasonal
-- Residual
-
-![STL](figures/stl.png)
-
----
-
-## ARIMA Forecast
-
-Forecasting of the final two years using Seasonal ARIMA.
-
-![Forecast](figures/forecast.png)
-
----
+```
 
 ## Residual Diagnostics
 
@@ -170,7 +124,7 @@ Mumbai-Sea-Level-Time-Series
 ├── scripts
 │   └── Sea_Level_Rise_Timeseries.R
 │
-├── images
+├── figures
 │
 ├── report
 │   └── Timeseries_Assignment.pdf
